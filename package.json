@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.6",
+    "@angular/cdk": "^14.1.0",
     "@angular/cli": "~14.0.6",
     "@angular/compiler-cli": "^14.0.0",
     "@ngrx/store": "^14.0.2",
