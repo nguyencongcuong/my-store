@@ -29,11 +29,11 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.subscribe(res => this.isLoggedIn = res)
+    this.auth.subscribe(res => this.isLoggedIn = res);
   }
 
   logout() {
-    this.authService.logout()
+    this.authService.logout();
   }
 
 }

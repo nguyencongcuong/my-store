@@ -12,46 +12,45 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-  private auth: Observable<boolean>
-
-  product: Product = {} as Product
+  product: Product = {} as Product;
   isLoggedIn: boolean = false;
   isFeedbacked: boolean = false;
+  private auth: Observable<boolean>;
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private store: Store<{auth: boolean}>
+    private store: Store<{ auth: boolean }>
   ) {
     this.auth = store.select('auth');
   }
 
   ngOnInit(): void {
-    this.auth.subscribe((res) => this.isLoggedIn = res)
+    this.auth.subscribe((res) => this.isLoggedIn = res);
     const routeParams = this.route.snapshot.paramMap;
     const productIDFromRoute = routeParams.get('id');
     this.productService.getProducts().subscribe((res) => {
       if (res.length > 0) {
-        this.product = res.find((item) => item.id === Number(productIDFromRoute)) as Product
+        this.product = res.find((item) => item.id === Number(productIDFromRoute)) as Product;
       }
-    })
+    });
   }
 
   public async addToCart(product: Product) {
     this.store.dispatch(addToCart(product));
     await this.showFeedback();
-    await this.hideFeedback(true)
+    await this.hideFeedback(true);
   }
 
   public async showFeedback() {
-    this.isFeedbacked = true
+    this.isFeedbacked = true;
   }
 
   public async hideFeedback(isShown: boolean) {
     if (isShown) {
-      const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-      await delay(1000)
-      this.isFeedbacked = false
+      const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+      await delay(1000);
+      this.isFeedbacked = false;
     }
   }
 

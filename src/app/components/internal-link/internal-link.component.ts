@@ -6,8 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./internal-link.component.scss']
 })
 export class InternalLinkComponent implements OnInit {
-  @Input() title : string;
-  @Input() route : string;
+  @Input() title: string;
+  @Input() route: string;
 
   constructor() {
     this.title = '';

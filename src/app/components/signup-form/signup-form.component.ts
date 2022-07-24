@@ -16,7 +16,7 @@ export class SignupFormComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private store: Store<{auth: boolean}>
+    private store: Store<{ auth: boolean }>
   ) {
   }
 
@@ -27,7 +27,7 @@ export class SignupFormComponent implements OnInit {
     const payload = {
       username: this.username,
       password: this.password
-    }
+    };
     this.authService.signup(payload).subscribe((res) => {
       if (res) {
         const { token } = res;
@@ -35,6 +35,6 @@ export class SignupFormComponent implements OnInit {
         this.store.dispatch(login());
         this.router.navigate(['/']);
       }
-    })
+    });
   }
 }

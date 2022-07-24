@@ -11,12 +11,12 @@ import { removeFromCart } from '../../store/cart/cart.actions';
 })
 export class CartItemComponent implements OnInit {
 
-  @Input() cartItem = {} as CartItem
+  @Input() cartItem = {} as CartItem;
 
-  public isFeedbacked : boolean = false
+  public isFeedbacked: boolean = false;
 
   constructor(
-    private store: Store<{cart: Cart}>
+    private store: Store<{ cart: Cart }>
   ) {
 
   }
@@ -25,16 +25,16 @@ export class CartItemComponent implements OnInit {
   }
 
   async removeFromCart(product: Product) {
-    this.isFeedbacked = true
-    await this.hideFeedback(true)
-    this.store.dispatch(removeFromCart(product))
+    this.isFeedbacked = true;
+    await this.hideFeedback(true);
+    this.store.dispatch(removeFromCart(product));
   }
 
   public async hideFeedback(isShown: boolean) {
     if (isShown) {
-      const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-      await delay(500)
-      this.isFeedbacked = false
+      const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+      await delay(500);
+      this.isFeedbacked = false;
     }
   }
 }

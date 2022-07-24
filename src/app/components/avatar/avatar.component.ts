@@ -13,14 +13,14 @@ export class AvatarComponent implements OnInit {
 
   auth: Observable<boolean>;
 
-  isLoggedIn: boolean = false
+  isLoggedIn: boolean = false;
 
   constructor(
-    private store: Store<{auth: boolean}>
+    private store: Store<{ auth: boolean }>
   ) {
-    this.src = ''
-    this.alt = ''
-    this.auth = store.select('auth')
+    this.src = '';
+    this.alt = '';
+    this.auth = store.select('auth');
   }
 
   ngOnInit(): void {

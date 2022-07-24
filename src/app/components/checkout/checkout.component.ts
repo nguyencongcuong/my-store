@@ -3,8 +3,7 @@ import { Observable } from 'rxjs';
 import { Cart } from '../../models/cart';
 import { Store } from '@ngrx/store';
 import { CheckOut } from '../../models/checkout';
-import { Product } from '../../models/product';
-import { removeFromCart, resetCart } from '../../store/cart/cart.actions';
+import { resetCart } from '../../store/cart/cart.actions';
 import { Router } from '@angular/router';
 import { NAVIGATION } from '../../models/navigation';
 
@@ -15,12 +14,12 @@ import { NAVIGATION } from '../../models/navigation';
 })
 export class CheckoutComponent implements OnInit {
 
-  private cart: Observable<Cart>
-  protected checkoutData = {} as CheckOut
-  public isFeedbacked: boolean = false
+  public isFeedbacked: boolean = false;
+  protected checkoutData = {} as CheckOut;
+  private cart: Observable<Cart>;
 
   constructor(
-    private store: Store<{cart: Cart}>,
+    private store: Store<{ cart: Cart }>,
     private router: Router,
   ) {
     this.cart = this.store.select('cart');
@@ -41,15 +40,15 @@ export class CheckoutComponent implements OnInit {
         totalCount: totalCount,
         totalPrice: totalPrice,
         currency: 'USD'
-      }
-    })
+      };
+    });
   }
 
   checkout() {
     // Do more logic for checkout here
 
-    this.store.dispatch(resetCart())
-    this.router.navigate([NAVIGATION.CHECKOUT_CONFIRMATION_PAGE])
+    this.store.dispatch(resetCart());
+    this.router.navigate([NAVIGATION.CHECKOUT_CONFIRMATION_PAGE]);
   }
 
 }

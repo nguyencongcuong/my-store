@@ -11,13 +11,14 @@ export class CheckoutConfirmationComponent implements OnInit {
 
   constructor(
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
   navigateToProductPage() {
-    this.router.navigate([NAVIGATION.HOME_PAGE])
+    this.router.navigate([NAVIGATION.HOME_PAGE]);
   }
 
 }

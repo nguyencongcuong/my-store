@@ -7,7 +7,7 @@ class Log {
 
   private print<T>(type: string, func: string, content: T): string {
 
-    const result = `type=${type}, func=${func}, content=${ (typeof content === 'object') ? JSON.stringify(content) : content}`
+    const result = `type=${type}, func=${func}, content=${(typeof content === 'object') ? JSON.stringify(content) : content}`;
 
     switch (type) {
       case this.INFO:

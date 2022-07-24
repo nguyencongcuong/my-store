@@ -7,17 +7,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class FloatingFeedbackComponent implements OnInit {
 
-  @Input() isShown : boolean = false
-  @Input() message : string = ''
+  @Input() isShown: boolean = false;
+  @Input() message: string = '';
   @Output() isShownEvent: EventEmitter<any> = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
   handleIsShown(value: boolean) {
-    this.isShownEvent.emit(value)
+    this.isShownEvent.emit(value);
   }
 
 }

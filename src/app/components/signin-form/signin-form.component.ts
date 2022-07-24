@@ -16,7 +16,7 @@ export class SigninFormComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private store: Store<{auth: boolean}>
+    private store: Store<{ auth: boolean }>
   ) {
   }
 
@@ -28,15 +28,15 @@ export class SigninFormComponent implements OnInit {
     const payload = {
       username: this.username,
       password: this.password
-    }
+    };
     this.authService.login(payload).subscribe((res) => {
       const { token } = res;
       if (token) {
         localStorage.setItem('token', token);
-        this.store.dispatch(login())
+        this.store.dispatch(login());
         this.router.navigate(['/']);
       }
-    })
+    });
   }
 
 }

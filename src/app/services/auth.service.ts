@@ -13,12 +13,13 @@ import { resetCart } from '../store/cart/cart.actions';
 })
 export class AuthService {
 
-  private auth: Observable<boolean>
+  private auth: Observable<boolean>;
+
   constructor(
     private http: HttpClient,
-    private store: Store<{auth: boolean}>
+    private store: Store<{ auth: boolean }>
   ) {
-    this.auth = store.select('auth')
+    this.auth = store.select('auth');
   }
 
   signup(payload: User): Observable<Auth> {
@@ -31,7 +32,7 @@ export class AuthService {
 
   logout() {
     localStorage.clear();
-    this.store.dispatch(resetCart())
-    this.store.dispatch(logout())
+    this.store.dispatch(resetCart());
+    this.store.dispatch(logout());
   }
 }

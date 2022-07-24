@@ -21,19 +21,19 @@ export class CartComponent implements OnInit {
     private store: Store<{ cart: Cart, auth: boolean }>,
     private router: Router
   ) {
-    this.cart = store.select('cart')
-    this.auth = store.select('auth')
+    this.cart = store.select('cart');
+    this.auth = store.select('auth');
   }
 
   ngOnInit(): void {
     this.cart.subscribe((res) => {
-      this.count = res.length
-    })
-    this.auth.subscribe(res => this.isLoggedIn = res)
+      this.count = res.length;
+    });
+    this.auth.subscribe(res => this.isLoggedIn = res);
   }
 
   navigateToCheckoutPage() {
-    this.router.navigate([NAVIGATION.CHECKOUT_PAGE])
+    this.router.navigate([NAVIGATION.CHECKOUT_PAGE]);
   }
 
 }
