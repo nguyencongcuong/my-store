@@ -39,4 +39,12 @@ export class SigninFormComponent implements OnInit {
     });
   }
 
+  handleUsername() {
+    console.log(this.username);
+  }
+
+  handlePassword() {
+    console.log(this.password);
+  }
+
 }
