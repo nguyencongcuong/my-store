@@ -13,7 +13,7 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterContainerComponent } from './containers/footer-container/footer-container.component';
 import { HeaderContainerComponent } from './containers/header-container/header-container.component';
 import { HomeContainerComponent } from './containers/home-container/home-container.component';
@@ -71,17 +71,18 @@ import { ProductDetailsContainerComponent } from './containers/product-details-c
     CartItemComponent,
     ProductDetailsContainerComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    MatIconModule,
-    StoreModule.forRoot({
-      cart: cartReducer,
-      auth: authReducer,
-    })
-  ],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		HttpClientModule,
+		FormsModule,
+		MatIconModule,
+		StoreModule.forRoot({
+			cart: cartReducer,
+			auth: authReducer,
+		}),
+		ReactiveFormsModule
+	],
   providers: [],
   bootstrap: [AppComponent]
 })

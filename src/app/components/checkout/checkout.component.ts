@@ -6,6 +6,12 @@ import { CheckOut } from '../../models/checkout';
 import { resetCart } from '../../store/cart/cart.actions';
 import { Router } from '@angular/router';
 import { NAVIGATION } from '../../models/navigation';
+import {
+  FormGroup,
+  FormControl,
+  Validators
+} from '@angular/forms';
+import { wordValidator } from '../../directives/wordValidator.directive';
 
 @Component({
   selector: 'app-checkout',
@@ -14,9 +20,17 @@ import { NAVIGATION } from '../../models/navigation';
 })
 export class CheckoutComponent implements OnInit {
 
-  public isFeedbacked: boolean = false;
-  protected checkoutData = {} as CheckOut;
+  public checkoutData = {} as CheckOut;
   private cart: Observable<Cart>;
+  checkoutForm = new FormGroup({
+    receiverName: new FormControl('', [Validators.required, Validators.minLength(6), wordValidator(/\d/g)]),
+    receiverMobilePhone: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    receiverAddress: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    cardHolderName: new FormControl('', [Validators.required, Validators.minLength(6), wordValidator(/\d/g)]),
+    cardHolderNumber: new FormControl('', [Validators.required, Validators.maxLength(16)]),
+    cardHolderExpiryDate: new FormControl('', [Validators.required]),
+    cardHolderSecurityNumber: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3)])
+  })
 
   constructor(
     private store: Store<{ cart: Cart }>,
@@ -30,7 +44,7 @@ export class CheckoutComponent implements OnInit {
       let totalCount = 0;
       let totalPrice = 0;
 
-      res.forEach((item, index) => {
+      res.forEach((item) => {
         totalCount += item.count;
         totalPrice += item.product.price * item.count;
       });
@@ -42,13 +56,20 @@ export class CheckoutComponent implements OnInit {
         currency: 'USD'
       };
     });
+
+
   }
 
   checkout() {
-    // Do more logic for checkout here
+    if(this.checkoutForm.valid) {
+      // Do more logic for checkout here
+      this.store.dispatch(resetCart());
+      this.router.navigate([NAVIGATION.CHECKOUT_CONFIRMATION_PAGE]);
+    }
+  }
 
-    this.store.dispatch(resetCart());
-    this.router.navigate([NAVIGATION.CHECKOUT_CONFIRMATION_PAGE]);
+  submitForm() {
+    this.checkout();
   }
 
 }
