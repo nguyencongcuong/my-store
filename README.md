@@ -29,3 +29,5 @@ This project uses the 2nd project built in the Nanodegree program. So please mak
 - Install Angular CLI: `npm install -g @angular/cli`
 - Access `my-store` root directory and run: `npm install` to install dependencies
 - Run `ng serve` or `npm start` to launch the dev server: `http://localhost:4200/`
+
+#GET_PASSES_THIS_REPO_UDACITY_PLEASE
